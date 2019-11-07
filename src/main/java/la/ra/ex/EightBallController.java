@@ -27,7 +27,7 @@ public class EightBallController {
     @GetMapping("/prediction")
     public @ResponseBody
     HashMap<String, String> getPrediction(@RequestParam("query") Optional<String> query) {
-        return new HashMap() {{
+        return new HashMap<>() {{
             put("time", isoDateString());
             put("response", eightBall.nextResponse());
             query.ifPresent(s -> put("query", s));
