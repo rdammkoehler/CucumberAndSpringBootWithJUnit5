@@ -64,6 +64,6 @@ class MainTest {
     @Test
     void theResponseContainsAQueryWhenOneIsGiven() {
         String query = "Will it snow soon?";
-        assertThat((HashMap<String, String>) getPrediction(query).getBody(), hasKey(equalTo("query")));
+        assertThat(((HashMap<String, String>) getPrediction(query).getBody()).get("query"), is(equalTo(query)));
     }
 }
