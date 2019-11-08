@@ -4,6 +4,7 @@ Feature: Magic Eight Ball
     Given no query
     When a request is made
     Then a response is received
+    And has no query in the response
 
   Scenario: With Query
     Given the query "Will I win the lottery?"

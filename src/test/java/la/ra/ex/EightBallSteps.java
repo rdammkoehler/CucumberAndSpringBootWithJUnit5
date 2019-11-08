@@ -12,8 +12,8 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.hasKey;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class EightBallSteps {
@@ -43,6 +43,11 @@ public class EightBallSteps {
     @Given("the query {string}")
     public void the_query(String string) {
         query = string;
+    }
+
+    @Then("has no query in the response")
+    public void has_no_query_in_the_response() {
+        assertThat((HashMap<String, String>) response.getBody(), not(hasKey(equalTo("query"))));
     }
 
     @Then("the query is in the response")
